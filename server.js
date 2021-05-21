@@ -23,27 +23,22 @@ const main = async () => {
 
   // puppeteer
   const browser = await puppeteer.launch({
-    args: ["--no-sandbox", "--disable-setuid-sandbox"],
+    // args: ["--no-sandbox", "--disable-setuid-sandbox"],
   });
+
   const page = await browser.newPage();
-  // await page.goto("https://playground.babylonjs.com/frame.html#PN1NNI#1"); // Or localhost:3000
   await page.goto("http://localhost:3000");
 
   page.evaluate("document.getElementsByTagName('canvas')[0].style.zIndex=500");
-  page.evaluate(
-    " document.getElementsByTagName('canvas')[0].style.height='100%'"
-  );
-  page.evaluate(
-    "document.getElementsByTagName('canvas')[0].style.position='absolute'"
-  );
+  page.evaluate(" document.getElementsByTagName('canvas')[0].style.height='100%'");
+  page.evaluate("document.getElementsByTagName('canvas')[0].style.position='absolute'");
 
-  // take a screenshot, save it locally and serve it to the requested webpage, need to wait a bit for the webpage to load before calling
-  app.get("/pic", async (req, res) => {
+  app.get("/screenshot", async (req, res) => {
     // can run JS on the webpage to modify the scene
     page.evaluate("BABYLON.Engine.LastCreatedScene.activeCamera.alpha = 1.4;");
 
     // resize and send pic
-    page.setViewport({ width: 1920, height: 1080, deviceScaleFactor: 1 });
+    page.setViewport({ width: 300, height: 300, deviceScaleFactor: 1 });
 
     await page.screenshot({ path: "./public/example.png" });
 

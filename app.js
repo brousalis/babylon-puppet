@@ -30,7 +30,7 @@ engine.enableOfflineSupport = false;
 
 const scene = new BABYLON.Scene(engine);
 
-scene.clearColor = new BABYLON.Color4(0.0, 0.0, 0.0, 1.0);
+scene.clearColor = new BABYLON.Color4(1.0, 0.0, 0.0, 1.0);
 
 // BABYLON.SceneLoader.ImportMeshAsync("", "", scene, function (scene) {
 // do something with the scene
