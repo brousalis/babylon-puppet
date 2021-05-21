@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "concurrently \"webpack-cli -w\" \"nodemon server.js\"",
+    "start": "concurrently \"webpack -w\" \"nodemon server.js\"",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
@@ -23,6 +23,7 @@
     "puppeteer": "^1.11.0",
     "ts-loader": "^5.3.3",
     "typescript": "^3.2.4",
+    "webpack": "^5.37.1",
     "webpack-cli": "^4.7.0",
     "webpack-node-externals": "^1.7.2"
   }
